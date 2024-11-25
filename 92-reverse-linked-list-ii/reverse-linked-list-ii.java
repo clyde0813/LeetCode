@@ -8,16 +8,12 @@ class Solution {
             node = node.next;
         }
         ListNode end = node.next;
-        ListNode endRoot = end;
-        ListNode rep = null;
-        for(int i=0;i<right-left+1;i++){
-            ListNode next = end.next;
-            end.next = rep;
-            rep = end;
-            end = next;
+        for(int i=0;i<right-left;i++){
+            ListNode tmp = node.next;
+            node.next = end.next;
+            end.next = end.next.next;
+            node.next.next = tmp;
         }
-        endRoot.next = end;
-        node.next = rep;
         return root.next;
     }
 }
