@@ -1,6 +1,6 @@
 class Solution {
     public boolean isValid(String s) {
-        if(s.length()==1) return false;
+        // if(s.length()==1) return false;
         Deque<Character> stack = new ArrayDeque<>();
         Map<Character, Character> table = new HashMap<>() {{
             put(')', '(');
