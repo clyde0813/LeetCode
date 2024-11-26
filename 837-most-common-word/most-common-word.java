@@ -8,6 +8,6 @@ class Solution {
                 counts.put(w, counts.getOrDefault(w, 0) + 1);
             }
         }
-        return counts.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
+        return Collections.max(counts.entrySet(), Map.Entry.comparingByValue()).getKey();
     }
 }
