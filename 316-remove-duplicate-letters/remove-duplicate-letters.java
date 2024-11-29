@@ -11,13 +11,12 @@ class Solution {
         for(int i=0;i<s.length();i++){
             set.add(s.charAt(i));
         }
-        System.out.println(String.valueOf(set));
         return set;
     }
 
     public String removeDuplicateLetters(String s) {
+        if(s.length()==1) return s;
         for(char c: toSortedSet(s)){
-            System.out.println(c);
             String suffix = s.substring(s.indexOf(c));
             if(toSortedSet(s).equals(toSortedSet(suffix))){
                 return c + removeDuplicateLetters(suffix.replace(String.valueOf(c), ""));
