@@ -4,7 +4,6 @@ class Solution {
         Map<Character, Integer> counter = new HashMap<>();
         Map<Character, Boolean> seen = new HashMap<>();
         Deque<Character> stack = new ArrayDeque<>();
-
         for(char c : s.toCharArray()) counter.put(c, counter.get(c) == null ? 1 : counter.get(c)+1);
         for(char c : s.toCharArray()){
             counter.put(c, counter.get(c)-1);
@@ -17,6 +16,6 @@ class Solution {
         while(!stack.isEmpty()){
             sb.append(stack.pollLast());
         }
-        return new String(sb);
+        return sb.toString();
     }
 }
