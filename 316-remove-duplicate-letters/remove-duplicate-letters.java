@@ -1,27 +1,22 @@
 class Solution {
-    public Set<Character> toSortedSet(String s){
-        Set<Character> set = new TreeSet<>(new Comparator<Character>() {
-            @Override
-            public int compare(Character o1, Character o2){
-                if(o1==o2) return 0;
-                else if(o1>o2) return 1;
-                else return -1;
-            }
-        });
-        for(int i=0;i<s.length();i++){
-            set.add(s.charAt(i));
-        }
-        return set;
-    }
-
     public String removeDuplicateLetters(String s) {
-        if(s.length()==1) return s;
-        for(char c: toSortedSet(s)){
-            String suffix = s.substring(s.indexOf(c));
-            if(toSortedSet(s).equals(toSortedSet(suffix))){
-                return c + removeDuplicateLetters(suffix.replace(String.valueOf(c), ""));
-            }
+        StringBuilder sb = new StringBuilder();
+        Map<Character, Integer> counter = new HashMap<>();
+        Map<Character, Boolean> seen = new HashMap<>();
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for(char c : s.toCharArray()) counter.put(c, counter.get(c) == null ? 1 : counter.get(c)+1);
+        for(char c : s.toCharArray()){
+            counter.put(c, counter.get(c)-1);
+            if(seen.get(c)!=null&&seen.get(c)==true) continue;
+            while(!stack.isEmpty()&&stack.peek()>c&&counter.get(stack.peek())>0) seen.put(stack.pop(), false);
+            System.out.println("push : " + c);
+            stack.push(c);
+            seen.put(c, true);
         }
-        return "";
+        while(!stack.isEmpty()){
+            sb.append(stack.pollLast());
+        }
+        return new String(sb);
     }
 }
