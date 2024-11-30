@@ -12,11 +12,9 @@ class Solution {
             stack.push(c);
             seen.put(c, true);
         }
-        String result = "";
         while(!stack.isEmpty()){
-            // sb.append(stack.pollLast());
-            result += stack.pollLast();
+            sb.append(stack.pollLast());
         }
-        return new String(result);
+        return new String(sb);
     }
 }
