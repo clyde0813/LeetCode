@@ -1,5 +1,6 @@
 class Solution {
     public String removeDuplicateLetters(String s) {
+        if(s.length()==1) return s;
         StringBuilder sb = new StringBuilder();
         Map<Character, Integer> counter = new HashMap<>();
         Map<Character, Boolean> seen = new HashMap<>();
@@ -15,6 +16,6 @@ class Solution {
         while(!stack.isEmpty()){
             sb.append(stack.pollLast());
         }
-        return new String(sb);
+        return sb.toString();
     }
 }
