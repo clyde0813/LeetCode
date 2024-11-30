@@ -9,13 +9,14 @@ class Solution {
             counter.put(c, counter.get(c)-1);
             if(seen.get(c)!=null&&seen.get(c)==true) continue;
             while(!stack.isEmpty()&&stack.peek()>c&&counter.get(stack.peek())>0) seen.put(stack.pop(), false);
-            System.out.println("push : " + c);
             stack.push(c);
             seen.put(c, true);
         }
+        String result = "";
         while(!stack.isEmpty()){
-            sb.append(stack.pollLast());
+            // sb.append(stack.pollLast());
+            result += stack.pollLast();
         }
-        return sb.toString();
+        return new String(result);
     }
 }
