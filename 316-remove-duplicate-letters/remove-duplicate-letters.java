@@ -13,9 +13,7 @@ class Solution {
             stack.push(c);
             seen.put(c, true);
         }
-        while(!stack.isEmpty()){
-            sb.append(stack.pollLast());
-        }
+        while(!stack.isEmpty()) sb.append(stack.pollLast());
         return sb.toString();
     }
 }
