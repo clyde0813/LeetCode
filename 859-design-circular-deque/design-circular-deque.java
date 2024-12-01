@@ -3,9 +3,7 @@ class MyCircularDeque {
         DoublyLinkedList left;
         DoublyLinkedList right;
         int val;
-        public DoublyLinkedList(int val){
-            this.val = val;
-        }
+        public DoublyLinkedList(int val) { this.val = val; }
     }
     int len;
     int k;
@@ -53,16 +51,8 @@ class MyCircularDeque {
         len--;
         return true;
     }
-    public int getFront() {
-        return isEmpty() ? -1 : head.right.val;
-    }
-    public int getRear() {
-        return isEmpty() ? -1 : tail.left.val;
-    }
-    public boolean isEmpty() {
-        return len==0;
-    }
-    public boolean isFull() {
-        return len==k;
-    }
+    public int getFront() { return isEmpty() ? -1 : head.right.val; }
+    public int getRear() { return isEmpty() ? -1 : tail.left.val; }
+    public boolean isEmpty() { return len==0; }
+    public boolean isFull() { return len==k; }
 }
