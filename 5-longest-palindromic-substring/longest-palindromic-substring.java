@@ -13,8 +13,9 @@ class Solution {
         }
     }
     public String longestPalindrome(String s) {
-        if(s.length()==1) return s;
-        for(int i=0;i<s.length()-1;i++){
+        int sLen = s.length();
+        if(sLen==1) return s;
+        for(int i=0;i<sLen-1;i++){
             extendPalindrome(s, i, i+1);
             extendPalindrome(s, i, i+2);
         }
