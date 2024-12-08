@@ -10,17 +10,11 @@ class Solution {
                 groupMap.put(g, new ArrayList<>(Arrays.asList(i)));
             }
         }
-        for(int key : groupMap.keySet()){
-            int cnt = 0;
-            List<Integer> tmp_list = new ArrayList<>();
-            for(int val : groupMap.get(key)){
-                cnt++;
-                tmp_list.add(val);
-                if(cnt==key){
-                    result.add(tmp_list);
-                    cnt = 0;
-                    tmp_list = new ArrayList<>();
-                }
+        for (Map.Entry<Integer, List<Integer>> entry : groupMap.entrySet()) {
+            int groupSize = entry.getKey();
+            List<Integer> members = entry.getValue();
+            for (int i = 0; i < members.size(); i += groupSize) {
+                result.add(members.subList(i, i + groupSize));
             }
         }
         return result;
