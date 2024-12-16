@@ -1,7 +1,7 @@
 class Solution {
     public void dfs(List<List<Integer>> results, List<Integer> prevElements, List<Integer> elements){
         if(elements.isEmpty()){
-            results.add(prevElements.stream().collect(Collectors.toList()));
+            results.add(new ArrayList<>(prevElements));
         }
 
         for(Integer e : elements){
