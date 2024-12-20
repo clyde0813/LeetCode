@@ -1,7 +1,7 @@
 class Solution {
     public void dfs(List<List<Integer>> results, int[] candidates, Deque<Integer> elements, int target, int index){
         if(target == 0){
-            results.add(elements.stream().collect(Collectors.toList()));
+            results.add(new ArrayList<>(elements));
             return;
         }
         if(target < 0){
