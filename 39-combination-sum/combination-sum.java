@@ -1,5 +1,5 @@
 class Solution {
-    public void dfs(List<List<Integer>> results, int[] candidates, LinkedList<Integer> elements, int target, int index){
+    public void dfs(List<List<Integer>> results, int[] candidates, Deque<Integer> elements, int target, int index){
         if(target<0) return;
         if(target == 0){
             results.add(new ArrayList<>(elements));
@@ -13,7 +13,7 @@ class Solution {
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> results = new ArrayList<>();
-        dfs(results, candidates, new LinkedList<>(), target, 0);
+        dfs(results, candidates, new ArrayDeque<>(), target, 0);
         return results;
     }
 }
