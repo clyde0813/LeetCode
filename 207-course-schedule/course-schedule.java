@@ -14,14 +14,13 @@ class Solution {
     }
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToMap = new HashMap<>();
-        List<Integer> takes = new ArrayList<>();
         List<Integer> taken = new ArrayList<>();
         for(int[] pre : prerequisites){
             courseToMap.putIfAbsent(pre[0], new ArrayList<>());
             courseToMap.get(pre[0]).add(pre[1]);
         }
         for(Integer i : courseToMap.keySet()){
-            if(!dfs(courseToMap, i, takes, taken)) return false;
+            if(!dfs(courseToMap, i, new ArrayList<>(), taken)) return false;
         }
         return true;
     }
