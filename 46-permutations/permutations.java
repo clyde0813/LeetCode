@@ -2,11 +2,11 @@ class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> results = new ArrayList<>();
         List<Integer> lst = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        dfs(results, new ArrayList<>(), lst);
+        dfs(results, new LinkedList<>(), lst);
         return results;
     }
 
-    public void dfs(List<List<Integer>> results, List<Integer> prevElements, List<Integer> elements){
+    public void dfs(List<List<Integer>> results, LinkedList<Integer> prevElements, List<Integer> elements){
         if(elements.isEmpty()){
             results.add(prevElements.stream().collect(Collectors.toList()));
         }
@@ -15,7 +15,7 @@ class Solution {
             nextElements.remove(e);
             prevElements.add(e);
             dfs(results, prevElements, nextElements);
-            prevElements.remove(e);
+            prevElements.removeLast();
         }
     }
 }
