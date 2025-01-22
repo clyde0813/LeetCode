@@ -6,10 +6,10 @@ class Solution {
     }
     
     public int dfs(TreeNode node){
-        if(node == null) return -1;
+        if(node == null) return 0;
         int left = dfs(node.left);
         int right = dfs(node.right);
-        this.longest = Math.max(this.longest, left+right+2);
+        this.longest = Math.max(this.longest, left+right);
         return Math.max(left, right) + 1;
     }
 }
